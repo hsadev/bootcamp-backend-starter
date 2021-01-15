@@ -60,7 +60,6 @@ const comparePassword = (password, hashedPassword) => new Promise((resolve, reje
   })
 })
 
-
 module.exports = {
   hashPassword, comparePassword, createToken, decodeToken,
 }
