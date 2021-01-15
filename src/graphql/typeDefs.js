@@ -4,15 +4,40 @@ module.exports = gql`
   type Mutation {
     login(email: String!, password: String!): AuthReturn!
     register(input: RegisterInput!): AuthReturn!
+
     addUser(input: UserInput!):User!
+
     addDiet(input: DietInput!):Diet!
+    updateDiet(input: DietInput!):Diet!
+
     addHealth(input: HealthInput!):Health!
+    updateHealth(input: HealthInput!):Health!
+
     addTriedRecipe(input: TriedRecipeInput!):TriedRecipe!
+
     addBookmark(input: BookmarkInput!): Bookmark!
+    delBookmark(input: BookmarkInput!): Bookmark!
+
   }
 
   type Query {
     welcome: String!
+
+    allUsers: [User!]!
+    userById(id:ID!):User!
+
+    allDiets: [Diet!]!
+    dietById(id:ID!):Diet!
+
+    allHealth: [Health!]!
+    healthById(id:ID!):Health!
+
+    allTriedRecipes: [TriedRecipe!]!
+    triedRecipeById(id:ID!):TriedRecipe
+
+    allBookmarks: [Bookmark!]!
+    bookmarkById(id:ID!):Bookmark!
+
   }
 
   type User {
