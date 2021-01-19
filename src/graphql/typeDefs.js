@@ -23,6 +23,7 @@ module.exports = gql`
     age: Int!
     genreDescription: [String!]
     topSongs: [Song!]!
+    matches: [User!]
     
 
     # createdAt: String!
