@@ -1,5 +1,4 @@
 const { gql } = require('apollo-server-express')
-const typeDefs = require('../../../bootcamp-backend-demo/src/graphql/typeDefs')
 
 module.exports = gql`
   type Mutation {
@@ -47,7 +46,7 @@ module.exports = gql`
   input RegisterInput {
     email: String!
     password: String!
+    firstName: String!
+    lastName: String!
   }
 `
-
-module.exports = typeDefs
