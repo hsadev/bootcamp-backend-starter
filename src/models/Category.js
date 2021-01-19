@@ -1,24 +1,25 @@
 const BaseModel = require('./BaseModel')
 const { HasManyRelation } = require('./BaseModel')
-const Score = require('./Score')
+const Question = require('./Question')
 
-class User extends BaseModel {
+
+class Category extends BaseModel {
   static get tableName() {
-    return 'users'
+    return 'categories'
   }
 
   static get relationMappings() {
     return {
-      scores: {
+      questions: {
         relation: HasManyRelation,
-        modelClass: Score,
+        modelClass: Question,
         join: {
-          from: 'users.id',
-          to: 'scores.userId',
+          from: 'categories.id',
+          to: 'questions.categoryId'
         },
       },
     }
   }
 }
 
-module.exports = User
+module.exports = Category
