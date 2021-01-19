@@ -2,7 +2,7 @@ const { gql } = require('apollo-server-express')
 
 module.exports = gql`
   type Mutation {
-    login(email: String!, password: String!): AuthReturn!
+    login(email: String!, password: String!): AuthReturn
     register(input: RegisterInput!): AuthReturn!
     addCourse(course: addCourseInput!): Course
     
