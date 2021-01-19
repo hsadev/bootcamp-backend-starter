@@ -41,6 +41,10 @@ typings/
 # Optional eslint cache
 .eslintcache
 
+#I was having problems with eslint so changed settings, ignored 
+.eslintrc.json 
+
+
 # Optional REPL history
 .node_repl_history
 
