@@ -25,20 +25,19 @@ module.exports = gql`
   type User {
     id: ID!
     email: String!
-    createdAt: String!
-    updatedAt: String!
+    createdAt: Date!
+    updatedAt: Date!
     username: String!
     password: String!
     firstName: String!
     lastName: String!
     accuracy: Float
     gamesPlayed: Int 
+    scores: [Score!]
   }
 
   input userInput {
     email: String!
-    createdAt: String!
-    updatedAt: String!
     username: String!
     password: String!
     firstName: String!
@@ -52,6 +51,7 @@ module.exports = gql`
     type: String! 
     popularity: Float
     difficulty: Float! 
+    questions: [Question!]
   }
 
   input categoryInput {
@@ -84,14 +84,14 @@ module.exports = gql`
     userId: ID!
     categoryId: ID!
     score: Float!
-    timeScored: String!
+    timeScored: Date!
   }
 
   input scoreInput {
     userId: ID!
     categoryId: ID!
     score: Float!
-    timeScored: String!
+    timeScored: Date!
   }
 
   type AuthReturn {
@@ -103,5 +103,6 @@ module.exports = gql`
     email: String!
     password: String!
   }
+
+  scalar Date
 `
-// need to make category type enum, not String
