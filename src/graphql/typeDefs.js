@@ -13,16 +13,15 @@ module.exports = gql`
   # user
   type User {
     id: ID!
+    email: String!
+    password: String!
     firstName: String!
     lastName: String!
-    birthday: Date!
-    email: String!
-    username:
-    password: String!
+    birthday: Date
     phoneNumber: String!
     age: Int!
     genreDescription: [String!]
-    topSongs: [Song!]!
+    topSongs: [Song!]
     matches: [User!]
     
 
