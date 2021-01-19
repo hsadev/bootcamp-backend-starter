@@ -12,10 +12,18 @@ exports.up = async knex => createTableIfNotExists(knex, 'users', table => {
     .unique()
     .notNullable()
 
+  table.string('username').notNullable()
+
   table.string('password').notNullable()
+
+  table.string('firstName').notNullable()
+  table.string('lastName').notNullable()
 
   table.timestamp('createdAt').defaultTo(knex.fn.now())
   table.timestamp('updatedAt').defaultTo(knex.fn.now())
+
+  table.integer('gamesPlayed')
 })
+
 
 exports.down = async knex => knex.schema.dropTableIfExists('users')
