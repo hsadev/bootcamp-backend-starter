@@ -7,7 +7,7 @@ class Artist extends BaseModel {
     }
   
     static get relationMappings() {
-      const Song = require('./Address')
+      const Song = require('./Song')
   
       return {
         songs: {
