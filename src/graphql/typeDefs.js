@@ -10,7 +10,7 @@ module.exports = gql`
     allQuestions: [Question!]!
     questionById(id: ID!): Question!
     allScores: [Score!]!
-    scoresById(id: ID!): Score!
+    scoreById(id: ID!): Score!
   }
 
   type Mutation {
@@ -71,7 +71,7 @@ module.exports = gql`
     difficulty: Float! 
   }
 
-  type questionInput {
+  input questionInput {
     categoryId: ID!
     question: String!
     answerMinimum: Int!

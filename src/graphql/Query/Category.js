@@ -20,15 +20,6 @@ const categoryById = async (obj, { id }, context) => {
   }
 }
 
-const scores = async ({ id }, args, context) => {
-  try {
-    const query = await Score.query().where('userId', id)
-    return query
-  } catch (err) {
-    throw new Error('Could not resolve the category\'s score query.')
-  }
-}
-
 const questions = async ({ id }, args, context) => {
   try {
     const query = await Question.query().where('categoryId', id)
@@ -44,7 +35,6 @@ const resolver = {
     categoryById,
   },
   Category: {
-    scores,
     questions,
   },
 }
