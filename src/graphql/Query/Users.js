@@ -3,7 +3,7 @@ const User = require('../../models/User')
 
 const userById = async (obj, { id }) => {
   try {
-    const user = await User.query().where('id', id)
+    const user = await User.query().findOne('id', id)
     return user
   } catch (err) {
     throw new Error('failed to get user')
@@ -12,7 +12,7 @@ const userById = async (obj, { id }) => {
 
 const userByEmail = async (obj, { email }) => {
   try {
-    const user = await User.query().where('email', email)
+    const user = await User.query().findOne('email', email)
     return user
   } catch (err) {
     throw new Error('failed to get user')

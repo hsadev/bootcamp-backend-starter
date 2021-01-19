@@ -8,8 +8,7 @@ module.exports = gql`
     
   }
   type Query {
-    userCourses(userID: ID!): [Course!]
-    userById(userID: ID!): User
+    userById(id: ID!): User   
     userByEmail(email: String!): User
     courseById(courseID: ID!): Course
 
@@ -44,18 +43,34 @@ module.exports = gql`
   }
 
   input addCourseInput {
-    title: String!
+    name: String!
     professor: String!
+    location: String!
     monday: Boolean!
     tuesday: Boolean!
     wednesday: Boolean!
     thursday: Boolean!
     friday: Boolean!
-    timeStart: String
+    timeStart: String!
     timeEnd: String
     hoursPerWeek: Int
     description: String
     enrolled: Boolean!
+  }
+
+  input updateCourseInput {
+    name: String
+    professor: String
+    location: String
+    monday: Boolean
+    tuesday: Boolean
+    wednesday: Boolean
+    thursday: Boolean
+    friday: Boolean
+    timeStart: String
+    timeEnd: String
+    hoursPerWeek: Int
+    description: String
   }
 
   type AuthReturn {
@@ -64,6 +79,8 @@ module.exports = gql`
   }
 
   input RegisterInput {
+    firstName: String!
+    lastName: String!
     email: String!
     password: String!
   }

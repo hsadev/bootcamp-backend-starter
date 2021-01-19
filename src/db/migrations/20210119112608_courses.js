@@ -15,6 +15,9 @@ exports.up = async knex => createTableIfNotExists(knex, 'courses', table => {
     .string('professor')
 
   table
+    .string('location')
+
+  table
     .boolean('monday')
     .notNullable()
 
