@@ -2,19 +2,21 @@ const casual = require('casual')
 const userData = require('./user')
 const categoryData = require('./category')
 
-casual.define('categoryScore', ({ id: myUserId }, { id: myCategoryId }) => ({
+casual.define('score', ({ userId, categoryId }) => ({
   id: casual.uuid,
-  userId: myUserId,
-  categoryId: myCategoryId,
+  userId,
+  categoryId,
   score: casual.integer(0, 1000),
 }))
 
 const scoreData = []
 
-userData.forEach(category => {
-  categoryData.forEach(user => {
-    scoreData.push(casual.score(user, category))
-  })
-})
+for (let i = 0; i < 30; ++i) {
+  const userId = casual.random_element(userData).id
+  const categoryId = casual.random_element(categoryData).id
+  scoreData.push(casual.score({ userId, categoryId }))
+}
+
+console.dir(scoreData, {depth: null})
 
 module.exports = scoreData

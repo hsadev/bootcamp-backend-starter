@@ -14,7 +14,7 @@ exports.up = async knex => createTableIfNotExists(knex, 'questions', table => {
     .onDelete('CASCADE')
     .notNullable()
 
-  table.string('question').notNullable()
+  table.text('question').notNullable()
 
   table.integer('answerMinimum').notNullable()
   table.integer('answerMaximum').notNullable()

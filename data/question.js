@@ -5,7 +5,6 @@ casual.define('question', ({ id: myCategoryId }) => ({
   id: casual.uuid,
   categoryId: myCategoryId,
   question: casual.text,
-  type: casual.random_element(['Geography', 'Miscellaneous']),
   answerMinimum: casual.integer(0, 100),
   answerMaximum: casual.integer(300, 600),
   popularity: casual.double(0, 100),
