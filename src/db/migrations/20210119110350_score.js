@@ -16,7 +16,7 @@ exports.up = async knex => createTableIfNotExists(knex, 'scores', table => {
 
   table
     .uuid('categoryId')
-    .references('category.id')
+    .references('categories.id')
     .onUpdate('CASCADE')
     .onDelete('CASCADE')
     .notNullable()

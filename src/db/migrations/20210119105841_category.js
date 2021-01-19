@@ -8,7 +8,7 @@ exports.up = async knex => createTableIfNotExists(knex, 'categories', table => {
     .defaultTo(knex.raw('uuid_generate_v4()'))
 
   table.string('title').notNullable()
-  table.string('description')
+  table.text('description')
 
   table.enum('type', ['Geography', 'Miscellaneous', 'etc.....']).notNullable()
 
