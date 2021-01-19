@@ -5,56 +5,38 @@ module.exports = gql`
     login(email: String!, password: String!): AuthReturn!
     register(input: RegisterInput!): AuthReturn!
 
-    addUser(input: UserInput!):User!
-
     addDiet(input: DietInput!):Diet!
-    updateDiet(input: DietInput!):Diet!
 
     addHealth(input: HealthInput!):Health!
-    updateHealth(input: HealthInput!):Health!
 
     addTriedRecipe(input: TriedRecipeInput!):TriedRecipe!
+    delTriedRecipe(input: TriedRecipeInput!):[TriedRecipe!]!
 
     addBookmark(input: BookmarkInput!): Bookmark!
-    delBookmark(input: BookmarkInput!): Bookmark!
+    delBookmark(input: BookmarkInput!): [Bookmark!]!
 
+    addMealTracker(input: MealTrackerInput!): MealTracker!
   }
 
   type Query {
-    welcome: String!
-
     allUsers: [User!]!
-    userById(id:ID!):User!
-
-    allDiets: [Diet!]!
-    dietById(id:ID!):Diet!
-
-    allHealth: [Health!]!
-    healthById(id:ID!):Health!
-
-    allTriedRecipes: [TriedRecipe!]!
-    triedRecipeById(id:ID!):TriedRecipe
-
-    allBookmarks: [Bookmark!]!
-    bookmarkById(id:ID!):Bookmark!
-
+    dietById(id:ID!):[Diet!]! 
+    healthById(id:ID!):[Health!]!
+    triedRecipeById(id:ID!):[TriedRecipe]!
+    bookmarkById(id:ID!):[Bookmark!]!
+    mealTrackerById(id: ID!):[MealTracker!]!
   }
 
   type User {
     id: ID!
     email: String!
     password: String!
-    firstName: String!
-    lastName: String!
     createdAt: String!
     updatedAt: String!
   }
 
   input UserInput {
-    email: String!
-    password: String!
-    firstName: String!
-    lastName: String!    
+    id: ID!
   }
 
   type Diet {
@@ -103,7 +85,6 @@ module.exports = gql`
 
   type MealTracker {
     id: ID!
-    user: User!
     tried: TriedRecipe!
     date: Date!
     meal: String!
