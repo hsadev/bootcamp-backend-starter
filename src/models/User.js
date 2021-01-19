@@ -1,4 +1,6 @@
 const BaseModel = require('./BaseModel')
+const { ManyToManyRelation } = require('./BaseModel')
+
 
 class User extends BaseModel {
   static get tableName() {
@@ -6,7 +8,35 @@ class User extends BaseModel {
   }
 
   static get relationMappings() {
-    return {}
+    const Song = require('./Song')
+    // const Relation = require('./Relation')
+
+    return {
+      songs: {
+        relation: ManyToManyRelation, // would this be many to many 
+        modelClass: Song,
+        join: {
+          from: 'users.id',
+          through: {
+            from: 'relations.userId',
+            to: 'relations.songId',
+          },
+          to: 'songs.id',
+        },
+      },
+      matches: {
+        relation: ManyToManyRelation,
+        modelClass: User,
+        join: {
+          from: 'users.id',
+          through: {
+            from: 'matches.user1Id',
+            to: 'matches.user2Id',
+          },
+          to: 'users.id',
+        },
+      },
+    }
   }
 }
 

@@ -1,4 +1,4 @@
-const { BelongsToOneRelation, HasManyRelation } = require('objection')
+const { HasManyRelation } = require('objection')
 const BaseModel = require('./BaseModel')
 
 class Artist extends BaseModel {
@@ -14,7 +14,7 @@ class Artist extends BaseModel {
           relation: HasManyRelation,
           modelClass: Song,
           join: {
-            from: 'authors.id',
+            from: 'artists.id',
             to: 'songs.artistId',
           },
         },
