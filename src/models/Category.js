@@ -1,6 +1,7 @@
 const BaseModel = require('./BaseModel')
 const { HasManyRelation } = require('./BaseModel')
 const Question = require('./Question')
+const Score = require('./Score')
 
 
 class Category extends BaseModel {
@@ -15,7 +16,15 @@ class Category extends BaseModel {
         modelClass: Question,
         join: {
           from: 'categories.id',
-          to: 'questions.categoryId'
+          to: 'questions.categoryId',
+        },
+        scores: {
+          relation: HasManyRelation,
+          modelClass: Score,
+          join: {
+            from: 'categories.id',
+            to: 'scores.categoryId',
+          },
         },
       },
     }
