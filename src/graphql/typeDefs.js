@@ -1,20 +1,97 @@
 const { gql } = require('apollo-server-express')
 
 module.exports = gql`
+
+  type Query {
+    allUsers: [User!]!
+    userById(id: ID!): User!
+    allCategories: [Category!]!
+    categoryById(id: ID!): Category!
+    allQuestions: [Question!]!
+    questionById(id: ID!): Question!
+    allScores: [Score!]!
+    scoresById(id: ID!): Score!
+  }
+
   type Mutation {
     login(email: String!, password: String!): AuthReturn!
     register(input: RegisterInput!): AuthReturn!
-  }
-
-  type Query {
-    welcome: String!
+    addUser(input: userInput!): User!
+    addQuestion(input: questionInput): Question!
+    addScore(input: scoreInput): Score!
+    addCategory(input: categoryInput!): Category!
   }
 
   type User {
     id: ID!
     email: String!
-    createdAt: String!
-    updatedAt: String!
+    createdAt: Date!
+    updatedAt: Date!
+    username: String!
+    password: String!
+    firstName: String!
+    lastName: String!
+    accuracy: Float
+    gamesPlayed: Int 
+    scores: [Score!]
+  }
+
+  input userInput {
+    email: String!
+    username: String!
+    password: String!
+    firstName: String!
+    lastName: String! 
+  }
+
+  type Category {
+    id: ID! 
+    title: String!
+    description: String!
+    type: String! 
+    popularity: Float
+    difficulty: Float! 
+    questions: [Question!]
+  }
+
+  input categoryInput {
+    title: String!
+    description: String!
+    type: String! 
+    difficulty: Float!
+  }
+
+  type Question {
+    id: ID!
+    categoryId: ID!
+    question: String!
+    answerMinimum: Int!
+    answerMaximum: Int!
+    popularity: Float 
+    difficulty: Float! 
+  }
+
+  type questionInput {
+    categoryId: ID!
+    question: String!
+    answerMinimum: Int!
+    answerMaximum: Int!
+    difficulty: Float! 
+  }
+
+  type Score {
+    id: ID!
+    userId: ID!
+    categoryId: ID!
+    score: Float!
+    timeScored: Date!
+  }
+
+  input scoreInput {
+    userId: ID!
+    categoryId: ID!
+    score: Float!
+    timeScored: Date!
   }
 
   type AuthReturn {
@@ -26,4 +103,6 @@ module.exports = gql`
     email: String!
     password: String!
   }
+
+  scalar Date
 `
