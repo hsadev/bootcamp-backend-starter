@@ -14,9 +14,9 @@ class User extends BaseModel {
         modelClass: Course,
         join: {
           from: 'users.id',
-          to: 'courses.userId'
-        }
-      }
+          to: 'courses.userId',
+        },
+      },
     }
   }
 }
