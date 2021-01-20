@@ -9,7 +9,7 @@ const allScores = async () => {
   }
 }
 
-const scoreById = async (obj, { id }, context) => {
+const scoreById = async (obj, { id }) => {
   try {
     const query = await Score.query().where('id', id)
     return query

@@ -9,7 +9,7 @@ const allQuestions = async () => {
   }
 }
 
-const questionById = async (obj, { id }, context) => {
+const questionById = async (obj, { id }) => {
   try {
     const query = await Question.query().where('id', id)
     return query
