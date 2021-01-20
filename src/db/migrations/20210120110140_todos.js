@@ -1,3 +1,4 @@
+const { createTableIfNotExists } = require('../helpers')
 
 exports.up = async knex => createTableIfNotExists(knex, 'courses', table => {
     table
