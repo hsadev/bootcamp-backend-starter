@@ -5,13 +5,14 @@ module.exports = gql`
     login(email: String!, password: String!): AuthReturn
     register(input: RegisterInput!): AuthReturn!
     addCourse(course: addCourseInput!): Course
-    
+    addTodo(todo: addTodoInput!): Todo
+    deleteTodo(todo: deleteTodoInput!): Todo
   }
   type Query {
     userById(id: ID!): User   
     userByEmail(email: String!): User
     courseById(courseID: ID!): Course
-
+    todoById(id: ID!): [Todo]
   }
 
   type User {
@@ -83,5 +84,22 @@ module.exports = gql`
     lastName: String!
     email: String!
     password: String!
+  }
+
+  type Todo {
+    id: ID!
+    name: String!
+    desc: String
+    user: User!
+  }
+
+  input addTodoInput {
+    name: String
+    desc: String
+    user: User!
+  }
+
+  input deleteTodoInput {
+    id: ID!
   }
 `
