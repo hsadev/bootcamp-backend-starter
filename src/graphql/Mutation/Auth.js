@@ -26,7 +26,9 @@ const login = async (obj, { email, password }) => {
   return { user, token }
 }
 
-const register = async (obj, { input: { email, password } }) => {
+// Linter suggestion was very very ugly. vv
+// eslint-disable-next-line object-curly-newline
+const register = async (obj, { input: { email, password, firstName, lastName } }) => {
   const emailExists = await User.query().findOne({ email })
   if (emailExists) {
     throw new UserInputError('Email is already in use')
@@ -36,6 +38,8 @@ const register = async (obj, { input: { email, password } }) => {
   const user = await User.query().insertAndFetch({
     email,
     password: passwordHash,
+    firstName,
+    lastName,
   })
 
   // If successful registration, set authentication information
