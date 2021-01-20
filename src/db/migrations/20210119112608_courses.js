@@ -1,59 +1,58 @@
 const { createTableIfNotExists } = require('../helpers')
 
 exports.up = async knex => createTableIfNotExists(knex, 'courses', table => {
-    table
-        .uuid('id')
-        .notNullable()
-        .primary()
-        .defaultTo(knex.raw('uuid_generate_v4()'))
+  table
+    .uuid('id')
+    .notNullable()
+    .primary()
+    .defaultTo(knex.raw('uuid_generate_v4()'))
 
-    table
-        .string('name')
-        .notNullable()
+  table
+    .string('name')
+    .notNullable()
 
-    table
-        .string('professor')
+  table
+    .string('professor')
 
-    table  
-        .boolean('monday')
-        .notNullable()
+  table
+    .boolean('monday')
+    .notNullable()
 
-    table  
-        .boolean('tuesday')
-        .notNullable()
+  table
+    .boolean('tuesday')
+    .notNullable()
 
-    table  
-        .boolean('wednesday')
-        .notNullable()
+  table
+    .boolean('wednesday')
+    .notNullable()
 
-    table  
-        .boolean('thursday')
-        .notNullable()
+  table
+    .boolean('thursday')
+    .notNullable()
 
-    table
-        .boolean('friday')
-        .notNullable()
-    
-    table
-        .time('timeStart')
+  table
+    .boolean('friday')
+    .notNullable()
 
-    table
-        .time('timeEnd')
+  table
+    .time('timeStart')
 
-    table
-        .integer('hoursPerWeek')
+  table
+    .time('timeEnd')
 
-    table
-        .text('description')
+  table
+    .integer('hoursPerWeek')
 
-    table
-        .boolean('enrolled')
-        .notNullable()
+  table
+    .text('description')
 
-    table
-        .uuid('userId')
-        .references('users.id')
-  
-});
+  table
+    .boolean('enrolled')
+    .notNullable()
+
+  table
+    .uuid('userId')
+    .references('users.id')
+})
 
 exports.down = async knex => knex.schema.dropTableIfExists('courses')

@@ -1,6 +1,7 @@
 const merge = require('lodash.merge')
-const Welcome = require('./Welcome')
+const Users = require('./Users')
+const Courses = require('./Courses')
 
-const resolvers = [Welcome]
+const resolvers = [Courses, Users]
 
 module.exports = merge(...resolvers)
