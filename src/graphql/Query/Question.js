@@ -5,7 +5,7 @@ const allQuestions = async () => {
     const query = await Question.query()
     return query
   } catch (err) {
-    throw new Error('Could not resolve users query.')
+    throw new Error('Could not resolve questions query.')
   }
 }
 

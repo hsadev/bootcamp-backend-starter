@@ -14,7 +14,7 @@ const scoreById = async (obj, { id }, context) => {
     const query = await Score.query().where('id', id)
     return query
   } catch (err) {
-    throw new Error('Could not resolve user by id query.')
+    throw new Error('Could not resolve score by id query.')
   }
 }
 
