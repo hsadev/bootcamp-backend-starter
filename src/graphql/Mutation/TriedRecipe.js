@@ -1,5 +1,5 @@
-const TriedRecipe = require('../../models/TriedRecipe')
-const MealTracker = require('../../models/MealTracker')
+const TriedRecipe = require('../../models/TriedRecipes')
+// const MealTracker = require('../../models/MealTracker')
 
 const addTriedRecipe = async(obj, {input}, context) => {
     try {
@@ -20,9 +20,9 @@ const delTriedRecipe = async(obj, {input}, context) => {
             link: input.link
         }).returning("*")
 
-        const delMT = await MealTracker.query().delete().where({
-            triedID: t.id
-        })
+        // const delMT = await MealTracker.query().delete().where({
+        //     triedID: t.id
+        // })
 
         const delTR = await TriedRecipe.query().delete().where({
             id: t.id

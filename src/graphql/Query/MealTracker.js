@@ -1,37 +1,37 @@
-const MealTracker = require('../../models/MealTracker')
-const TriedRecipe = require('../../models/TriedRecipe')
+// const MealTracker = require('../../models/MealTracker')
+// const TriedRecipe = require('../../models/TriedRecipes')
 
-const mealTrackerById = async(obj, {id}, context) => {
-    try {
-        console.log("TEST")
-        const tried = await TriedRecipe.query().where({userID:id})
+// const mealTrackerById = async(obj, {id}, context) => {
+//     try {
+//         console.log("TEST")
+//         const tried = await TriedRecipe.query().where({userID:id})
 
-        const mealtracker = []
+//         const mealtracker = []
 
-        for (i=0; i < tried.length; i++){
-            const t = await MealTracker.query().where({triedID: tried[i].id})
-            mealtracker.push(...t)
-        }
+//         for (i=0; i < tried.length; i++){
+//             const t = await MealTracker.query().where({triedID: tried[i].id})
+//             mealtracker.push(...t)
+//         }
 
-        return mealtracker
+//         return mealtracker
 
-    } catch (err) {
-        console.log(err)
-    }
-}
+//     } catch (err) {
+//         console.log(err)
+//     }
+// }
 
-const tried = async({triedID}, params, context) => {
-    const t = await TriedRecipe.query().findById(triedID)
-    return t
-}
+// const tried = async({triedID}, params, context) => {
+//     const t = await TriedRecipe.query().findById(triedID)
+//     return t
+// }
 
-const resolver = {
-    Query: {
-        mealTrackerById
-    },
-    MealTracker: {
-        tried
-    }
-}
+// const resolver = {
+//     Query: {
+//         mealTrackerById
+//     },
+//     MealTracker: {
+//         tried
+//     }
+// }
 
-module.exports = resolver
+// module.exports = resolver

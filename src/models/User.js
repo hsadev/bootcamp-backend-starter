@@ -1,4 +1,5 @@
-const { HasManyRelation, BaseModel } = require('./BaseModel')
+const { BelongsToOneRelation, HasManyRelation } = require('objection')
+const BaseModel = require('./BaseModel')
 const Diet = require('./Diet')
 const Health = require('./Health')
 const TriedRecipes = require('./TriedRecipes')
@@ -16,7 +17,7 @@ class User extends BaseModel {
         modelClass: Diet,
         join: {
           from: 'users.id',
-          to: 'diet.userID',
+          to: 'diets.userID',
         },
       },
 
@@ -25,7 +26,7 @@ class User extends BaseModel {
         modelClass: Health,
         join: {
           from: 'users.id',
-          to: 'health.userID',
+          to: 'healths.userID',
         },
       },
 

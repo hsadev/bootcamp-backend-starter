@@ -1,9 +1,11 @@
-const { BelongsToOneRelation, BaseModel } = require('./BaseModel')
+const { BelongsToOneRelation, HasManyRelation } = require('objection')
+const BaseModel = require('./BaseModel')
+
 const User = require('./User')
 
 class Health extends BaseModel {
   static get tableName() {
-    return 'health'
+    return 'healths'
   }
 
   static get relationMappings() {
@@ -12,7 +14,7 @@ class Health extends BaseModel {
         relation: BelongsToOneRelation,
         modelClass: User,
         join: {
-          from: 'health.userID',
+          from: 'healths.userID',
           to: 'users.id',
         },
       },

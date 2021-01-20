@@ -1,4 +1,4 @@
-const Bookmark = require('../../models/Bookmark')
+const Bookmark = require('../../models/Bookmarks')
 const User = require('../../models/User')
 
 const bookmarkById = async(obj, {id}, context) => {

@@ -1,4 +1,4 @@
-const Bookmark = require('../../models/Bookmark')
+const Bookmark = require('../../models/Bookmarks')
 
 const addBookmark = async(obj, {input}, context) => {
     try {

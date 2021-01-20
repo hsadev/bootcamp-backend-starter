@@ -1,4 +1,7 @@
-const { BelongsToOneRelation, BaseModel } = require('./BaseModel')
+const { BelongsToOneRelation, HasManyRelation } = require('objection')
+
+const BaseModel = require('./BaseModel')
+
 const User = require('./User')
 
 class Bookmarks extends BaseModel {

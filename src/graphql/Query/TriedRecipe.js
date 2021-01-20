@@ -1,4 +1,4 @@
-const TriedRecipe = require('../../models/TriedRecipe')
+const TriedRecipe = require('../../models/TriedRecipes')
 const User = require('../../models/User')
 
 const triedRecipeById = async(obj, {id}, context) => {
