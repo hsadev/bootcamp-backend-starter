@@ -2,17 +2,17 @@ const { gql } = require('apollo-server-express')
 
 module.exports = gql`
   type Mutation {
-    login(email: String!, password: String!): AuthReturn
+    login(email: String!, password: String!): AuthReturn!
     register(input: RegisterInput!): AuthReturn!
     addCourse(course: addCourseInput!): Course
-    addTodo(todo: addTodoInput!): Todo
-    deleteTodo(todo: deleteTodoInput!): Todo
+    
   }
   type Query {
-    userById(id: ID!): User   
+    userCourses(userID: ID!): [Course!]
+    userById(userID: ID!): User
     userByEmail(email: String!): User
     courseById(courseID: ID!): Course
-    todoById(id: ID!): [Todo]
+
   }
 
   type User {
@@ -44,34 +44,18 @@ module.exports = gql`
   }
 
   input addCourseInput {
-    name: String!
+    title: String!
     professor: String!
-    location: String!
     monday: Boolean!
     tuesday: Boolean!
     wednesday: Boolean!
     thursday: Boolean!
     friday: Boolean!
-    timeStart: String!
-    timeEnd: String
-    hoursPerWeek: Int
-    description: String
-    enrolled: Boolean!
-  }
-
-  input updateCourseInput {
-    name: String
-    professor: String
-    location: String
-    monday: Boolean
-    tuesday: Boolean
-    wednesday: Boolean
-    thursday: Boolean
-    friday: Boolean
     timeStart: String
     timeEnd: String
     hoursPerWeek: Int
     description: String
+    enrolled: Boolean!
   }
 
   type AuthReturn {
@@ -80,10 +64,10 @@ module.exports = gql`
   }
 
   input RegisterInput {
-    firstName: String!
-    lastName: String!
     email: String!
     password: String!
+    firstName: String!
+    lastName: String!
   }
 
   type Todo {
@@ -92,13 +76,12 @@ module.exports = gql`
     desc: String
     user: User!
   }
-
   input addTodoInput {
     name: String
     desc: String
   }
-
   input deleteTodoInput {
     id: ID!
   }
 `
+
