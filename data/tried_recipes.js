@@ -1,19 +1,19 @@
 const casual = require('casual')
 const userData = require('./users')
 
-casual.define('diet', ({ userID }) => ({
+casual.define('tried_recipe', ({ userID }) => ({
   id: casual.uuid,
   userID,
-  restriction: casual.random_element(['balanced', 'high-fiber', 'high-protein', 'low-carb', 'low-fat', 'low-sodium']),
+  link: casual.url,
   createdAt: casual.moment,
   updatedAt: casual.moment,
 }))
 
-const dietData = []
+const triedRecipeData = []
 
 for (let i = 0; i < 20; ++i) {
   const userID = casual.random_element(userData).id
-  dietData.push(casual.diet({ userID }))
+  triedRecipeData.push(casual.tried_recipe({ userID }))
 }
 
-module.exports = dietData
+module.exports = triedRecipeData

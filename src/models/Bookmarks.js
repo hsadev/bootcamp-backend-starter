@@ -1,9 +1,9 @@
 const { BelongsToOneRelation, BaseModel } = require('./BaseModel')
 const User = require('./User')
 
-class Health extends BaseModel {
+class Bookmarks extends BaseModel {
   static get tableName() {
-    return 'health'
+    return 'bookmarks'
   }
 
   static get relationMappings() {
@@ -12,7 +12,7 @@ class Health extends BaseModel {
         relation: BelongsToOneRelation,
         modelClass: User,
         join: {
-          from: 'health.userID',
+          from: 'bookmarks.userID',
           to: 'users.id',
         },
       },
@@ -20,4 +20,4 @@ class Health extends BaseModel {
   }
 }
 
-module.exports = Health
+module.exports = Bookmarks

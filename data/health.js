@@ -1,19 +1,19 @@
 const casual = require('casual')
-const userData = require('./user')
+const userData = require('./users')
 
-const healths = ['Gluten','Eggs','Wheat','Shellfish','Peanuts','Dairy','Soy','Fish','Tree Nuts']
-
-casual.define('health', userId => ({
-    id: casual.uuid,
-    userID: userId,
-    restriction: healths[casual.integer(from=0,to=8)]
+casual.define('health', ({ userID }) => ({
+  id: casual.uuid,
+  userID,
+  restriction: casual.random_element(['dairy-free', 'egg-free', 'gluten-free', 'kosher', 'peanut-free', 'pescatarian', 'shellfish-free', 'soy-free', 'tree-nut-free', 'vegan', 'vegetarian']),
+  createdAt: casual.moment,
+  updatedAt: casual.moment,
 }))
 
 const healthData = []
 
 for (let i = 0; i < 20; ++i) {
-    const userId = casual.random_element(userData).id
-    healthData.push(casual.health(userId))
+  const userID = casual.random_element(userData).id
+  healthData.push(casual.health({ userID }))
 }
 
 module.exports = healthData
