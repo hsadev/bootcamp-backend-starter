@@ -96,7 +96,6 @@ module.exports = gql`
   input addTodoInput {
     name: String
     desc: String
-    user: User!
   }
 
   input deleteTodoInput {
