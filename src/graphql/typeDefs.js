@@ -15,7 +15,6 @@ module.exports = gql`
     addBookmark(input: BookmarkInput!): Bookmark!
     delBookmark(input: BookmarkInput!): [Bookmark!]!
 
-    addMealTracker(input: MealTrackerInput!): MealTracker!
   }
 
   type Query {
@@ -24,7 +23,6 @@ module.exports = gql`
     healthById(id:ID!):[Health!]!
     triedRecipeById(id:ID!):[TriedRecipe]!
     bookmarkById(id:ID!):[Bookmark!]!
-    mealTrackerById(id: ID!):[MealTracker!]!
   }
 
   type User {
@@ -81,20 +79,6 @@ module.exports = gql`
   input BookmarkInput {
     user: UserInput!
     link: String!    
-  }
-
-  type MealTracker {
-    id: ID!
-    tried: TriedRecipe!
-    date: Date!
-    meal: String!
-  }
-
-  input MealTrackerInput {
-    user: UserInput!
-    tried: TriedRecipeInput!
-    date: Date!
-    meal: String!    
   }
 
   type AuthReturn {
