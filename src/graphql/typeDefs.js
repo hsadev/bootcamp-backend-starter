@@ -19,10 +19,6 @@ module.exports = gql`
 
   type Query {
     allUsers: [User!]!
-    dietById(id:ID!):[Diet!]! 
-    healthById(id:ID!):[Health!]!
-    # triedRecipeById(id:ID!):[TriedRecipe]!
-    # bookmarkById(id:ID!):[Bookmark!]!
     userViewer: User!
   }
 
@@ -66,27 +62,26 @@ module.exports = gql`
 
   type TriedRecipe {
     id: ID!
-    apiID: ID!
+    apiID: String!
     user: User!
     link: String!
   }
 
   input TriedRecipeInput {
-    apiID: ID!
+    apiID: String!
     user: UserInput!
     link: String!
   }
 
   type Bookmark {
     id: ID!
-    apiID: ID!
+    apiID: String!
     user: User!
     link: String!
   }
 
   input BookmarkInput {
-    user: UserInput!
-    apiID: ID!
+    apiID: String!
     link: String!    
   }
 

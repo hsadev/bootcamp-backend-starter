@@ -1,10 +1,10 @@
-const Health = require('../../models/Health')
+const TriedRecipe = require('../../models/TriedRecipes')
 const User = require('../../models/User')
 
-const healthById = async(obj, {id}, context) => {
+const triedRecipeById = async(obj, {id}, context) => {
     try {
-        const health = await Health.query().where({userID:id})
-        return health
+        const triedRecipes = await TriedRecipe.query().where({userID:id})
+        return triedRecipes
     } catch (err) {
         console.log(err)
     }
@@ -17,9 +17,9 @@ const user = async({userID}, params, context) => {
 
 const resolver = {
     Query: {
-        healthById
+        triedRecipeById
     },
-    Health: {
+    TriedRecipe: {
         user
     }
 }
