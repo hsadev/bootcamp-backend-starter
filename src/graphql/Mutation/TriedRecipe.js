@@ -4,6 +4,7 @@ const addTriedRecipe = async(obj, {input}, context) => {
     try {
         const insert = await TriedRecipe.query().insert({
             userID: input.user.id,
+            apiID: input.apiID,
             link: input.link
         }).returning("*")
         return insert

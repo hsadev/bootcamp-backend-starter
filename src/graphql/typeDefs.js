@@ -61,23 +61,27 @@ module.exports = gql`
 
   type TriedRecipe {
     id: ID!
+    apiID: ID!
     user: User!
     link: String!
   }
 
   input TriedRecipeInput {
+    apiID: ID!
     user: UserInput!
     link: String!
   }
 
   type Bookmark {
     id: ID!
+    apiID: ID!
     user: User!
     link: String!
   }
 
   input BookmarkInput {
     user: UserInput!
+    apiID: ID!
     link: String!    
   }
 

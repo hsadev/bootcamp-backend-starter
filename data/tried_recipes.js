@@ -3,6 +3,7 @@ const userData = require('./users')
 
 casual.define('tried_recipe', ({ userID }) => ({
   id: casual.uuid,
+  apiID: casual.string,
   userID,
   link: casual.url,
   createdAt: casual.moment,

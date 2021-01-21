@@ -6,6 +6,10 @@ exports.up = async knex => createTableIfNotExists(knex, 'tried_recipes', table =
     .notNullable()
     .primary()
     .defaultTo(knex.raw('uuid_generate_v4()'))
+  
+  table
+    .string('apiID')
+    .notNullable()
 
   table
     .uuid('userID')

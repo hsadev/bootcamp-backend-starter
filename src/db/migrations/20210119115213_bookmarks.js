@@ -8,6 +8,10 @@ exports.up = async knex => createTableIfNotExists(knex, 'bookmarks', table => {
     .defaultTo(knex.raw('uuid_generate_v4()'))
 
   table
+    .string('apiID')
+    .notNullable()
+
+  table
     .uuid('userID')
     .references('users.id')
     .notNullable()
