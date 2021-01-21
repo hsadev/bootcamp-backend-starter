@@ -14,21 +14,26 @@ module.exports = gql`
 
     addBookmark(input: BookmarkInput!): Bookmark!
     delBookmark(input: BookmarkInput!): [Bookmark!]!
-
+    
   }
 
   type Query {
     allUsers: [User!]!
     dietById(id:ID!):[Diet!]! 
     healthById(id:ID!):[Health!]!
-    triedRecipeById(id:ID!):[TriedRecipe]!
-    bookmarkById(id:ID!):[Bookmark!]!
+    # triedRecipeById(id:ID!):[TriedRecipe]!
+    # bookmarkById(id:ID!):[Bookmark!]!
+    userViewer: User!
   }
 
   type User {
     id: ID!
     email: String!
     password: String!
+    triedRecipes: [TriedRecipe!]!
+    bookmarks: [Bookmark!]!
+    diets: [Diet!]!
+    healths: [Health!]!
     createdAt: String!
     updatedAt: String!
   }
