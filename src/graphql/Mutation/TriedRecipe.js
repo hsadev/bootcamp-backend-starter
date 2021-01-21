@@ -1,9 +1,9 @@
 const TriedRecipe = require('../../models/TriedRecipes')
 
-const addTriedRecipe = async(obj, {input}, context) => {
+const addTriedRecipe = async(obj, {input}, {user: {id}}) => {
     try {
         const insert = await TriedRecipe.query().insert({
-            userID: input.user.id,
+            userID: id,
             apiID: input.apiID,
             link: input.link
         }).returning("*")
@@ -13,10 +13,11 @@ const addTriedRecipe = async(obj, {input}, context) => {
     }
 }
 
-const delTriedRecipe = async(obj, {input}, context) => {
+const delTriedRecipe = async(obj, {input}, {user: {id}}) => {
     try {
         const t = await TriedRecipe.query().findOne({
-            userID: input.user.id,
+            userID: id,
+            apiID: input.apiID,
             link: input.link
         }).returning("*")
 

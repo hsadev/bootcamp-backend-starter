@@ -1,9 +1,9 @@
 const Health = require('../../models/Health')
 
-const addHealth = async(obj, {input}, context) => {
+const addHealth = async(obj, {input}, {user: {id}}) => {
     try {
         const insert = await Health.query().insert({
-            userID: input.user.id,
+            userID: id,
             restriction: input.restriction
         }).returning("*")
         return insert

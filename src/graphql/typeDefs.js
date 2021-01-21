@@ -40,43 +40,36 @@ module.exports = gql`
 
   type Diet {
     id: ID!
-    user: User!
     restriction: String!
   }
 
   input DietInput {
-    user: UserInput!
     restriction: String!    
   }
 
   type Health {
     id: ID!
-    user: User!
     restriction: String!
   }
 
   input HealthInput {
-    user: UserInput!
     restriction: String!    
   }
 
   type TriedRecipe {
     id: ID!
     apiID: String!
-    user: User!
     link: String!
   }
 
   input TriedRecipeInput {
     apiID: String!
-    user: UserInput!
     link: String!
   }
 
   type Bookmark {
     id: ID!
     apiID: String!
-    user: User!
     link: String!
   }
 

@@ -4,7 +4,6 @@ const {
   hashPassword, comparePassword, createToken,
 } = require('../../lib/auth')
 
-
 const login = async (obj, { email, password }) => {
   const user = await User.query().findOne({
     email,

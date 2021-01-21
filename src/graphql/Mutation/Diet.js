@@ -1,9 +1,9 @@
 const Diet = require('../../models/Diet')
 
-const addDiet = async(obj, {input}, context) => {
+const addDiet = async(obj, {input}, {user:{id}}) => {
     try {
         const insert = await Diet.query().insert({
-            userID: input.user.id,
+            userID: id,
             restriction: input.restriction
         }).returning("*")
         return insert
